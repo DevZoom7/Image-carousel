@@ -1,0 +1,112 @@
+@use "sass:math";
+
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: sans-serif;
+}
+
+html {
+   color-scheme: dark;
+}
+
+body {
+   min-height: 100dvh;
+   display: grid;
+   place-items: center;
+   padding: 16px * 3 16px;
+}
+
+img {
+   max-width: 100%;
+}
+
+.carousel {
+   $color: rgb(59, 150, 255);
+   $color-hover: rgb(9, 97, 199);
+   $imgWidth: 640px;
+   $imgHeight: 427px;
+   max-width: $imgWidth;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   $radius: 20px;
+   border-bottom: {
+      left-radius: $radius;
+      right-radius: $radius;
+   }
+   background-color: rgba(255 255 255 / 0.05);
+   user-select: none;
+   &__image-wrapper {
+      position: relative;
+      aspect-ratio: math.div($imgWidth, $imgHeight);
+      overflow: hidden;
+      img {
+         position: absolute;
+         touch-action: none;
+         cursor: grab;
+         &:active {
+            cursor: grabbing;
+         }
+      }
+      &.disabled {
+         pointer-events: none;
+      }
+   }
+   &__controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 16px;
+      @media (max-width: 480px) {
+         justify-content: center;
+      }
+   }
+   &__pagination {
+      $diameter: 40px;
+      &-arrows {
+         display: flex;
+         gap: 16px;
+         i {
+            color: $color;
+            font-size: $diameter;
+            cursor: pointer;
+            transition: color 200ms ease;
+            &:hover {
+               color: $color-hover;
+            }
+         }
+      }
+      &-dots {
+         $gap: 10px;
+         // ? Enough space for 6 dots ↓↓↓
+         max-width: $diameter * 6 + $gap * 5;
+         height: $diameter;
+         display: flex;
+         gap: $gap;
+         overflow: hidden;
+         span {
+            background-color: transparent;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            width: $diameter;
+            height: $diameter;
+            border-radius: $diameter * 0.5;
+            border: 2px solid $color;
+            cursor: pointer;
+            transition: background-color 200ms ease;
+            &:hover {
+               background-color: rgb(59, 150, 255, 0.15);
+            }
+            &.active {
+               background-color: $color;
+               pointer-events: none;
+            }
+         }
+      }
+   }
+}

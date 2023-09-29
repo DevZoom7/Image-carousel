@@ -1,0 +1,102 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 48px 16px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.carousel {
+  max-width: 640px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  user-select: none;
+}
+.carousel__image-wrapper {
+  position: relative;
+  aspect-ratio: 1.4988290398;
+  overflow: hidden;
+}
+.carousel__image-wrapper img {
+  position: absolute;
+  touch-action: none;
+  cursor: grab;
+}
+.carousel__image-wrapper img:active {
+  cursor: grabbing;
+}
+.carousel__image-wrapper.disabled {
+  pointer-events: none;
+}
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 16px;
+}
+@media (max-width: 480px) {
+  .carousel__controls {
+    justify-content: center;
+  }
+}
+.carousel__pagination-arrows {
+  display: flex;
+  gap: 16px;
+}
+.carousel__pagination-arrows i {
+  color: rgb(59, 150, 255);
+  font-size: 40px;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+.carousel__pagination-arrows i:hover {
+  color: rgb(9, 97, 199);
+}
+.carousel__pagination-dots {
+  max-width: 290px;
+  height: 40px;
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+}
+.carousel__pagination-dots span {
+  background-color: transparent;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: 2px solid rgb(59, 150, 255);
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+.carousel__pagination-dots span:hover {
+  background-color: rgba(59, 150, 255, 0.15);
+}
+.carousel__pagination-dots span.active {
+  background-color: rgb(59, 150, 255);
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=main.css.map */
